@@ -13,7 +13,6 @@ O sistema permite gerenciar uma biblioteca pessoal com as seguintes funcionalida
 - Marcar livros como lido/não lido
 - Pesquisar livros
 - Listar livros
-- Persistir dados em arquivo JSON
 
 ## Tecnologias utilizadas
 
