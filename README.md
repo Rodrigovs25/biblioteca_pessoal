@@ -9,15 +9,10 @@ O sistema permite gerenciar uma biblioteca pessoal com as seguintes funcionalida
 - Adicionar livros(Título, autor, ano, ISBN)
 - Remover livros por meio do ISBN
 - Marcar livros como lido/não lido
-<<<<<<< HEAD
-- Pesquisar livros
-- Listar livros
-=======
 - Pesquisar livros por título, autor, ano e ISBN
 - Listar todos os livros, os livros lidos e não lidos
 - Avaliar os livros lidos com notas de 1 a 5
 - Guardar dados em arquivo JSON
->>>>>>> cf5b184 (Avaliação incluída)
 
 ## Tecnologias utilizadas
 
