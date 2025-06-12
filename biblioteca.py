@@ -2,7 +2,7 @@ import json
 import os
 
 class Livro:
-    def __init__(self, titulo, autor, ano, isbn, lido=False):
+    def __init__(self, titulo, autor, ano, isbn, lido=False, avaliacao=None):
         if not titulo or not autor or not isbn:
             raise ValueError("Título, autor e ISBN são obrigatórios.")
         self.titulo = titulo
@@ -10,6 +10,7 @@ class Livro:
         self.ano = ano
         self.isbn = isbn
         self.lido = lido
+        self.avaliacao = avaliacao
 
     def to_dict(self):
         return {
@@ -17,7 +18,8 @@ class Livro:
             "autor": self.autor,
             "ano": self.ano,
             "isbn": self.isbn,
-            "lido": self.lido
+            "lido": self.lido,
+            "avaliacao": self.avaliacao
         }
 
 class Biblioteca:
@@ -33,7 +35,7 @@ class Biblioteca:
         self._salvar()
 
     def remover_livro(self, isbn):
-        livro = self._buscar_por_isbn(isbn)
+        livro = self.buscar_por_isbn(isbn)
         if livro:
             self.livros.remove(livro)
             self._salvar()
@@ -41,7 +43,7 @@ class Biblioteca:
             raise ValueError("Livro não encontrado.")
 
     def marcar_como_lido(self, isbn):
-        livro = self._buscar_por_isbn(isbn)
+        livro = self.buscar_por_isbn(isbn)
         if livro:
             livro.lido = True
             self._salvar()
@@ -49,12 +51,23 @@ class Biblioteca:
             raise ValueError("Livro não encontrado.")
 
     def marcar_como_nao_lido(self, isbn):
-        livro = self._buscar_por_isbn(isbn)
+        livro = self.buscar_por_isbn(isbn)
         if livro:
             livro.lido = False
             self._salvar()
         else:
             raise ValueError("Livro não encontrado.")
+    
+    def avaliar_livro(self, isbn, nota):
+        livro = self.buscar_por_isbn(isbn)
+        if not livro:
+            raise ValueError("Livro não encontrado.")
+        if not livro.lido:
+            raise ValueError("Só é possível avaliar livros que já foram lidos.")
+        if not isinstance(nota, int) or nota < 1 or nota > 5:
+            raise ValueError("A avaliação deve ser um número inteiro entre 1 e 5.")
+        livro.avaliacao = nota
+        self._salvar()
 
     def listar_livros(self):
         return self.livros
@@ -70,12 +83,11 @@ class Biblioteca:
 
     def buscar_por_autor(self, autor):
         return [l for l in self.livros if autor.lower() in l.autor.lower()]
+    
+    def buscar_por_ano(self, ano):
+        return [l for l in self.livros if l.ano == ano]
 
     def buscar_por_isbn(self, isbn):
-        livro = self._buscar_por_isbn(isbn)
-        return livro if livro else None
-
-    def _buscar_por_isbn(self, isbn):
         for l in self.livros:
             if l.isbn == isbn:
                 return l
@@ -96,7 +108,8 @@ class Biblioteca:
                         autor=l["autor"],
                         ano=l["ano"],
                         isbn=l["isbn"],
-                        lido=l["lido"]
+                        lido=l["lido"],
+                        avaliacao=l.get("avaliacao")
                     )
                     for l in livros_json
                 ]
