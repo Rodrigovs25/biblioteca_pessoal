@@ -113,3 +113,27 @@ class Biblioteca:
                     )
                     for l in livros_json
                 ]
+
+    def listar_livros_por_avaliacao(self, nota_minima):
+        return [
+            l for l in self.livros
+            if l.avaliacao is not None and l.avaliacao >= nota_minima
+        ]
+
+    def relatorio_resumo(self):
+        total = len(self.livros)
+        lidos = [l for l in self.livros if l.lido]
+        nao_lidos = [l for l in self.livros if not l.lido]
+        avaliacoes = [l.avaliacao for l in lidos if l.avaliacao is not None]
+
+        media_avaliacao = (
+            sum(avaliacoes) / len(avaliacoes)
+            if avaliacoes else None
+        )
+
+        return {
+            "total_livros": total,
+            "total_lidos": len(lidos),
+            "total_nao_lidos": len(nao_lidos),
+            "media_avaliacao_lidos": media_avaliacao
+        }
