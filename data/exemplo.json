@@ -1,0 +1,42 @@
+[
+  {
+    "titulo": "O Hobbit",
+    "autor": "J. R. R. Tolkien",
+    "ano": 1997,
+    "isbn": "PY123",
+    "lido": true,
+    "avaliacao": 3
+  },
+  {
+    "titulo": "Diário de um Banana",
+    "autor": "Jeff Kinney",
+    "ano": 2007,
+    "isbn": "ES456",
+    "lido": false,
+    "avaliacao": null
+  },
+  {
+    "titulo": "Harry Potter e a Pedra Filosofal",
+    "autor": "J. K. Rowling",
+    "ano": 1997,
+    "isbn": "CC789",
+    "lido": true,
+    "avaliacao": 5
+  },
+  {
+    "titulo": "Guerra dos Tronos",
+    "autor": "George R. R. Martin",
+    "ano": 1996,
+    "isbn": "CC789",
+    "lido": true,
+    "avaliacao": 5
+  },
+  {
+    "titulo": "Memórias do subsolo",
+    "autor": "Dostoiévski",
+    "ano": 1864,
+    "isbn": "CC789",
+    "lido": false,
+    "avaliacao": null
+  }
+]

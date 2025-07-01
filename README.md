@@ -18,6 +18,10 @@ O sistema permite gerenciar uma biblioteca pessoal com as seguintes funcionalida
 - Avaliar os livros lidos com notas de 1 a 5
 - Guardar dados em arquivo JSON
 
+## Teste
+- main.py: para testar algumas funcionalidades, tem um menu e acessar um arquivo json para fazer as operações
+- data/exemplo.json: arquivo com alguns livros
+
 ## Tecnologias utilizadas
 
 - Python 3.11
