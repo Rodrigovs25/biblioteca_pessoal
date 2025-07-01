@@ -14,8 +14,9 @@ O sistema permite gerenciar uma biblioteca pessoal com as seguintes funcionalida
 - Remover livros por meio do ISBN
 - Marcar livros como lido/não lido
 - Pesquisar livros por título, autor, ano e ISBN
-- Listar todos os livros, os livros lidos e não lidos
+- Listar todos os livros, os livros lidos, não lidos e por avaliação
 - Avaliar os livros lidos com notas de 1 a 5
+- Gera um relatório sobre os livros
 - Guardar dados em arquivo JSON
 
 ## Teste
